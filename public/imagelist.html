@@ -1,0 +1,54 @@
+<h4>Upload file list</h4>
+<table ng-app="app" ng-controller="ImageListController">
+  <tr>
+    <td style="vertical-align: top; padding-right: 20px;">
+      <table class="table table-hover table-sm">
+        <tr>
+          <th>name</th>
+          <th>Size</th>
+          <th>width</th>
+          <th>height</th>
+          <th>store name</th>
+          <th>preview</th>
+        </tr>
+        <tr ng-repeat="f in filelist" style="font:smaller">
+          <td ng-model="name">{{f.name}}</td>
+          <td ng-model="size">{{f.size}}</td>
+          <td ng-model="width">{{f.width}}</td>
+          <td ng-model="height">{{f.height}}</td>
+          <td ng-model="store_name">{{f.store_name}}</td>
+          <td ><button ng-click="displaySprite(f.store_name, f.width, f.height)">preview</button></td>
+        </tr>
+      </table>
+    </td>
+    <td>
+      <iframe ng-src="{{selectedImageInfo.imageUrl}}" style="width:600px; height:600px; border:0px;"></iframe><br>
+      <table class="table table-hover table-sm">
+        <tr>
+          <th>start frame index</th>
+          <td><input type="text" name="sFrame" ng-model="selectedImageInfo.startFrame"></td>
+        </tr>
+        <tr>
+          <th>end frame index</th>
+          <td><input type="text" name="eFrame" ng-model="selectedImageInfo.endFrame"></td>
+        </tr>
+        <tr>
+          <th>total frame count</th>
+          <td>
+            <input type="text" name="frameCount" ng-model="selectedImageInfo.frameCount" ng-change="processFrameCount()">
+          </td>
+        </tr>
+        <tr>
+          <th>frame width</th>
+          <td>
+            <input type="text" name="width" ng-model="selectedImageInfo.frameWidth">
+            <font size="2" color='red'>*정수가 아닐 경우 -1</font>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2" ng-click="playAnimation()"><button>start</button></td>
+        </tr>
+      </table>
+    </td>
+  <tr>
+<table>
