@@ -28,27 +28,29 @@
     var parsedParam = parse_query_string(document.location.search);
     parsedParam['height'] = parseInt(parsedParam['height']);
     parsedParam['width'] = parseInt(parsedParam['width']);
-    parsedParam['frame_width'] = parseInt(parsedParam['frame_width']);
-    parsedParam['frame_count'] = parseInt(parsedParam['frame_count']);
+    parsedParam['frameWidth'] = parseInt(parsedParam['frameWidth']);
+    parsedParam['frameCount'] = parseInt(parsedParam['frameCount']);
+    parsedParam['startFrame'] = parseInt(parsedParam['startFrame']);
+    parsedParam['endFrame'] = parseInt(parsedParam['endFrame']);
 
     var game = new Phaser.Game(720, 1230, Phaser.CANVAS, 'phaser-example', { preload: preload, create: create, update: update });
     function preload() {
       if(parsedParam['ani']) {
-        game.load.spritesheet('test', './upload/files/' + parsedParam.store_name, parsedParam.frame_width, parsedParam.height, parsedParam.frame_count);
+        game.load.spritesheet('test', './upload/files/' + parsedParam.storeName, parsedParam.frameWidth, parsedParam.height, parsedParam.frameCount);
       } else {
-        game.load.image('test', './upload/files/' + parsedParam.store_name, parsedParam.width, parsedParam.height);
+        game.load.image('test', './upload/files/' + parsedParam.storeName, parsedParam.width, parsedParam.height);
       }
     }
 
     function create() {
       game.stage.disableVisibilityChange = true;
-      if(!parsedParam.store_name) {
+      if(!parsedParam.storeName) {
         return;
       }
       if(parsedParam.ani) {
         var testSprite = game.add.sprite(0, 0, 'test');
         var aniData = [];
-        for(var i = parsedParam.sFrame ; i < parsedParam.eFrame ; i++) {
+        for(var i = parsedParam.startFrame ; i < parsedParam.endFrame ; i++) {
           aniData.push(i);
         }
         testSprite.animations.add('run', aniData, aniData.length);

@@ -24,6 +24,17 @@ module.exports = {
     }
   },
   module: {
+    rules: [
+      {
+        test: /\.js$/,
+        loader: [ 'angular-template-url-loader' ],
+        exclude: /node_modules/
+      },
+      {
+        test: /\.html$/,
+        loader: 'html-loader',
+        exclude: /node_modules/ }
+    ],
     loaders: [
       {
         test: /\.js$/,

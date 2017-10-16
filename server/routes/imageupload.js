@@ -18,9 +18,16 @@ router.post('/upload', (req, res) => {
     let splitFileName = files.file[0].path.split(".");
     let sFileName = splitFileName[0];
     let sFileExtension = splitFileName[1];
-    fields.store_name = path.basename(files.file[0].path);
-
-    let json = JSON.stringify(fields);
+    let jsonData = {
+      imageWidth: fields.imageWidth[0],
+      imageHeigth: fields.imageHeigth[0],
+      fileName: fields.fileName[0],
+      fileSize: fields.fileSize[0],
+      storeName: path.basename(files.file[0].path),
+      frameCount: -1,
+      frameWidth: null
+    };
+    let json = JSON.stringify(jsonData);
     fs.writeFile(sFileName + '.data', json, 'utf-8', function(err) {
       if(err) {
         return console.log(err);
@@ -37,10 +44,10 @@ router.post('/upload', (req, res) => {
 
 router.post('/update', (req, res) => {
   let param = req.body;
-  let dataFileName = param.store_name.split(".")[0] + '.data';
+  let dataFileName = param.storeName.split(".")[0] + '.data';
   let imageData = getImageData(dataFileName);
-  imageData['frame_count'] = param.frame_count;
-  imageData['frame_width'] = param.frame_width;
+  imageData['frameCount'] = param.frameCount;
+  imageData['frameWidth'] = param.frameWidth;
 
   let json = JSON.stringify(imageData);
   fs.writeFileSync(UPLOAD_DIR + '/' + dataFileName, json, 'utf-8');

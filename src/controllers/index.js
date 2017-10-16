@@ -1,4 +1,4 @@
-import ImageUploadController from './ImageUploadController';
-import ImageListController from './ImageListController';
+import ImageUploadCtrl from './ImageUploadCtrl';
+import ImageListCtrl from './ImageListCtrl';
 
-export { ImageUploadController, ImageListController };
+export { ImageUploadCtrl, ImageListCtrl };

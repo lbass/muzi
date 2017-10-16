@@ -43,9 +43,16 @@ router.post('/upload', function (req, res) {
     var splitFileName = files.file[0].path.split(".");
     var sFileName = splitFileName[0];
     var sFileExtension = splitFileName[1];
-    fields.store_name = _path2.default.basename(files.file[0].path);
-
-    var json = JSON.stringify(fields);
+    var jsonData = {
+      imageWidth: fields.imageWidth[0],
+      imageHeigth: fields.imageHeigth[0],
+      fileName: fields.fileName[0],
+      fileSize: fields.fileSize[0],
+      storeName: _path2.default.basename(files.file[0].path),
+      frameCount: -1,
+      frameWidth: null
+    };
+    var json = JSON.stringify(jsonData);
     _fs2.default.writeFile(sFileName + '.data', json, 'utf-8', function (err) {
       if (err) {
         return console.log(err);
@@ -62,10 +69,11 @@ router.post('/upload', function (req, res) {
 
 router.post('/update', function (req, res) {
   var param = req.body;
-  var dataFileName = param.store_name.split(".")[0] + '.data';
+  var dataFileName = param.storeName.split(".")[0] + '.data';
   var imageData = getImageData(dataFileName);
-  imageData['frame_count'] = param.frame_count;
-  imageData['frame_width'] = param.frame_width;
+  console.info(imageData);
+  imageData['frameCount'] = param.frameCount;
+  imageData['frameWidth'] = param.frameWidth;
 
   var json = JSON.stringify(imageData);
   _fs2.default.writeFileSync(UPLOAD_DIR + '/' + dataFileName, json, 'utf-8');

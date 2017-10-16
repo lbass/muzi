@@ -1,0 +1,18 @@
+<form ng-app="app" ng-controller="ImageUploadCtrl" name="form">
+  <h4>Upload on file select</h4>
+  <button ngf-select="uploadFiles($files, $invalidFiles)" multiple accept="image/*" ngf-max-height="1000" ngf-max-size="10MB">Select Files</button>
+  <br><br>
+  Files:
+  <ul>
+    <li ng-repeat="file in files" style="font:smaller">
+      {{file.name}} {{file.$errorParam}}
+      <span ng-show="file.progress >= 0">
+        <div style="width:{{file.progress}}%" ng-bind="file.progress + '%'"></div>
+      </span>
+    </li>
+    <li ng-repeat="file in errFiles" style="font:smaller">
+      {{file.name}} {{file.$error}} {{file.$errorParam}}
+    </li>
+  </ul>
+  {{errorMsg}}
+</form>

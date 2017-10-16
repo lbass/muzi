@@ -48,15 +48,15 @@ router.get('/list', function (req, res) {
 
 function imageDataToJson(imageData) {
   var result = {
-    name: imageData.file_name[0],
-    size: imageData.file_size[0],
-    width: imageData.image_width[0],
-    height: imageData.image_heigth[0],
-    store_name: imageData.store_name
+    name: imageData.fileName,
+    size: imageData.fileSize,
+    width: imageData.imageWidth,
+    height: imageData.imageHeigth,
+    storeName: imageData.storeName
   };
-  if (imageData.frame_width) {
-    result['frame_width'] = imageData.frame_width;
-    result['frame_count'] = imageData.frame_count;
+  if (imageData.frameWidth) {
+    result['frameWidth'] = imageData.frameWidth;
+    result['frameCount'] = imageData.frameCount;
   }
   return result;
 }

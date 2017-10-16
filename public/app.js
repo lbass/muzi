@@ -9317,15 +9317,12 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 _angular2.default.module('app', [_angularUiRouter2.default, _ngFileUpload2.default]).config(function ($stateProvider, $urlRouterProvider) {
     $stateProvider.state('imageupload', {
         url: '/imageupload',
-        templateUrl: 'imageupload.html',
-        controller: 'ImageUploadController' }).state('imagepreview', {
-        url: '/imagepreview',
-        templateUrl: 'imagepreview.html',
-        controller: 'ImagePreviewController' }).state('imagelist', {
+        template: __webpack_require__(97),
+        controller: 'ImageUploadCtrl' }).state('imagelist', {
         url: '/imagelist',
-        templateUrl: 'imagelist.html',
-        controller: 'ImageListController' });
-}).controller('ImageUploadController', ['$scope', 'Upload', '$timeout', _controllers.ImageUploadController]).controller('ImageListController', ['$scope', 'ImageListService', _controllers.ImageListController]).controller('ImagePreviewController', ['$scope', function ($scope) {}]).service('ImageListService', _services.ImageListService);
+        template: __webpack_require__(98),
+        controller: 'ImageListCtrl' });
+}).controller('ImageUploadCtrl', ['$scope', 'Upload', '$timeout', _controllers.ImageUploadCtrl]).controller('ImageListCtrl', ['$scope', 'ImageListService', _controllers.ImageListCtrl]).service('ImageListService', _services.ImageListService);
 
 /***/ }),
 /* 60 */
@@ -32519,20 +32516,20 @@ ngFileUpload.service('UploadExif', ['UploadResize', '$q', function (UploadResize
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.ImageListController = exports.ImageUploadController = undefined;
+exports.ImageListCtrl = exports.ImageUploadCtrl = undefined;
 
-var _ImageUploadController = __webpack_require__(93);
+var _ImageUploadCtrl = __webpack_require__(93);
 
-var _ImageUploadController2 = _interopRequireDefault(_ImageUploadController);
+var _ImageUploadCtrl2 = _interopRequireDefault(_ImageUploadCtrl);
 
-var _ImageListController = __webpack_require__(94);
+var _ImageListCtrl = __webpack_require__(94);
 
-var _ImageListController2 = _interopRequireDefault(_ImageListController);
+var _ImageListCtrl2 = _interopRequireDefault(_ImageListCtrl);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-exports.ImageUploadController = _ImageUploadController2.default;
-exports.ImageListController = _ImageListController2.default;
+exports.ImageUploadCtrl = _ImageUploadCtrl2.default;
+exports.ImageListCtrl = _ImageListCtrl2.default;
 
 /***/ }),
 /* 93 */
@@ -32553,10 +32550,11 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var ImageUploadController = function ImageUploadController($scope, Upload, $timeout) {
-  _classCallCheck(this, ImageUploadController);
+var ImageUploadCtrl = function ImageUploadCtrl($scope, Upload, $timeout) {
+  _classCallCheck(this, ImageUploadCtrl);
 
   $scope.uploadFiles = function (files, errFiles) {
+    console.info(11);
     $scope.files = files;
     $scope.errFiles = errFiles;
     _angular2.default.forEach(files, function (file) {
@@ -32565,10 +32563,10 @@ var ImageUploadController = function ImageUploadController($scope, Upload, $time
         method: 'POST',
         file: file,
         fields: {
-          image_width: file.$ngfWidth,
-          image_heigth: file.$ngfHeight,
-          file_name: file.name,
-          file_size: file.size
+          imageWidth: file.$ngfWidth,
+          imageHeigth: file.$ngfHeight,
+          fileName: file.name,
+          fileSize: file.size
         }
       });
       file.upload.then(function (response) {
@@ -32586,7 +32584,7 @@ var ImageUploadController = function ImageUploadController($scope, Upload, $time
   };
 };
 
-exports.default = ImageUploadController;
+exports.default = ImageUploadCtrl;
 
 /***/ }),
 /* 94 */
@@ -32607,17 +32605,16 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var ImageListController = function ImageListController($scope, ImageListService) {
-  _classCallCheck(this, ImageListController);
+var ImageListCtrl = function ImageListCtrl($scope, ImageListService) {
+  _classCallCheck(this, ImageListCtrl);
 
-  this.service = ImageListService;
-  $scope.selectedImageInfo = {
-    store_name: '',
+  $scope.selectedImage = {
+    storeName: '',
     width: 0,
     height: 0,
-    image_url: './phaserpreview.html',
-    frame_width: 0,
-    frame_count: 0
+    imageUrl: './phaserPreview.html',
+    frameWidth: 0,
+    frameCount: 0
   };
 
   ImageListService.getImageList().then(function (response) {
@@ -32625,35 +32622,35 @@ var ImageListController = function ImageListController($scope, ImageListService)
   });
 
   $scope.processFrameCount = function () {
-    var frameWidth = $scope.selectedImageInfo.width / $scope.selectedImageInfo.frame_count;
+    var frameWidth = $scope.selectedImage.width / $scope.selectedImage.frameCount;
     if (Number.isInteger(frameWidth)) {
-      $scope.selectedImageInfo.frame_width = frameWidth;
+      $scope.selectedImage.frameWidth = frameWidth;
     } else {
-      $scope.selectedImageInfo.frame_width = -1;
+      $scope.selectedImage.frameWidth = -1;
     }
   };
 
   $scope.displaySprite = function (imageFile) {
-    $scope.selectedImageInfo = {
-      store_name: imageFile.store_name,
+    $scope.selectedImage = {
+      storeName: imageFile.storeName,
       width: imageFile.width,
       height: imageFile.height,
-      image_url: "./phaserpreview.html?store_name=" + imageFile.store_name + "&width=" + imageFile.width + "&height=" + imageFile.height,
-      frame_width: imageFile.frame_width,
-      frame_count: imageFile.frame_count
+      imageUrl: "./phaserPreview.html?storeName=" + imageFile.storeName + "&width=" + imageFile.width + "&height=" + imageFile.height,
+      frameWidth: imageFile.frameWidth,
+      frameCount: imageFile.frameCount
     };
   };
 
   $scope.playAnimation = function () {
-    var queryString = "ani=true" + "&store_name=" + $scope.selectedImageInfo.store_name + "&start_frame=" + $scope.selectedImageInfo.start_frame + "&end_frame=" + $scope.selectedImageInfo.end_frame + "&frame_width=" + $scope.selectedImageInfo.frame_width + "&height=" + $scope.selectedImageInfo.height + "&frame_count=" + $scope.selectedImageInfo.frame_count;
-    $scope.selectedImageInfo.image_url = "./phaserpreview.html?" + queryString;
+    var queryString = "ani=true" + "&storeName=" + $scope.selectedImage.storeName + "&startFrame=" + $scope.selectedImage.startFrame + "&endFrame=" + $scope.selectedImage.endFrame + "&frameWidth=" + $scope.selectedImage.frameWidth + "&height=" + $scope.selectedImage.height + "&frameCount=" + $scope.selectedImage.frameCount;
+    $scope.selectedImage.imageUrl = "./phaserPreview.html?" + queryString;
   };
 
   $scope.saveAnimationInfo = function () {
     var param = {
-      store_name: $scope.selectedImageInfo.store_name,
-      frame_width: $scope.selectedImageInfo.frame_width,
-      frame_count: $scope.selectedImageInfo.frame_count
+      storeName: $scope.selectedImage.storeName,
+      frameWidth: $scope.selectedImage.frameWidth,
+      frameCount: $scope.selectedImage.frameCount
     };
     ImageListService.updateImageInfo(param).then(function (response) {
       alert('저장되었습니다.');
@@ -32668,7 +32665,7 @@ var ImageListController = function ImageListController($scope, ImageListService)
   };
 };
 
-exports.default = ImageListController;
+exports.default = ImageListCtrl;
 
 /***/ }),
 /* 95 */
@@ -32735,6 +32732,18 @@ var ImageListService = function () {
 }();
 
 exports.default = ImageListService;
+
+/***/ }),
+/* 97 */
+/***/ (function(module, exports) {
+
+module.exports = "<form ng-app=\"app\" ng-controller=\"ImageUploadCtrl\" name=\"form\">\r\n  <h4>Upload on file select</h4>\r\n  <button ngf-select=\"uploadFiles($files, $invalidFiles)\" multiple accept=\"image/*\" ngf-max-height=\"1000\" ngf-max-size=\"10MB\">Select Files</button>\r\n  <br><br>\r\n  Files:\r\n  <ul>\r\n    <li ng-repeat=\"file in files\" style=\"font:smaller\">\n      {{file.name}} {{file.$errorParam}}\r\n      <span ng-show=\"file.progress >= 0\">\r\n        <div style=\"width:{{file.progress}}%\" ng-bind=\"file.progress + '%'\"></div>\r\n      </span>\r\n    </li>\r\n    <li ng-repeat=\"file in errFiles\" style=\"font:smaller\">\n      {{file.name}} {{file.$error}} {{file.$errorParam}}\r\n    </li>\r\n  </ul>\r\n  {{errorMsg}}\r\n</form>\r\n";
+
+/***/ }),
+/* 98 */
+/***/ (function(module, exports) {
+
+module.exports = "<h4>Upload file list</h4>\r\n<table ng-app=\"app\" ng-controller=\"ImageListCtrl\">\r\n  <tr>\r\n    <td style=\"vertical-align: top; padding-right: 20px;\">\r\n      <table class=\"table table-hover table-sm\">\r\n        <tr>\r\n          <th>name</th>\r\n          <th>Size</th>\r\n          <th>width</th>\r\n          <th>height</th>\r\n          <th>store name</th>\r\n          <th>preview</th>\r\n        </tr>\r\n        <tr ng-repeat=\"file in filelist\" style=\"font:smaller\">\r\n          <td>{{file.name}}</td>\r\n          <td>{{file.size}}</td>\r\n          <td>{{file.width}}</td>\r\n          <td>{{file.height}}</td>\r\n          <td>{{file.storeName}}</td>\r\n          <td ><button ng-click=\"displaySprite(file)\">preview</button></td>\r\n        </tr>\r\n      </table>\r\n    </td>\r\n    <td>\r\n      <iframe ng-src=\"{{selectedImage.imageUrl}}\" style=\"width:600px; height:600px; border:0px;\"></iframe><br>\r\n      <table class=\"table table-hover table-sm\">\r\n        <tr>\r\n          <th>start frame index</th>\r\n          <td><input type=\"text\" name=\"sFrame\" ng-model=\"selectedImage.startFrame\"></td>\r\n        </tr>\r\n        <tr>\r\n          <th>end frame index</th>\r\n          <td><input type=\"text\" name=\"eFrame\" ng-model=\"selectedImage.endFrame\"></td>\r\n        </tr>\r\n        <tr>\r\n          <th>total frame count</th>\r\n          <td>\r\n            <input type=\"text\" name=\"frameCount\" ng-model=\"selectedImage.frameCount\" ng-change=\"processFrameCount()\">\r\n          </td>\r\n        </tr>\r\n        <tr>\r\n          <th>frame width</th>\r\n          <td>\r\n            <input type=\"text\" name=\"width\" ng-model=\"selectedImage.frameWidth\">\r\n            <font size=\"2\" color='red'>*정수가 아닐 경우 -1</font>\r\n          </td>\r\n        </tr>\r\n        <tr>\r\n          <td colspan=\"2\">\r\n            <button ng-click=\"playAnimation()\">start</button>\r\n            <button ng-click=\"saveAnimationInfo()\">save</button>\r\n          </td>\r\n        </tr>\r\n      </table>\r\n    </td>\r\n  <tr>\r\n<table>\r\n";
 
 /***/ })
 /******/ ]);
