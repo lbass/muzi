@@ -28,19 +28,21 @@
     var parsedParam = parse_query_string(document.location.search);
     parsedParam['height'] = parseInt(parsedParam['height']);
     parsedParam['width'] = parseInt(parsedParam['width']);
-    parsedParam['frameWidth'] = parseInt(parsedParam['frameWidth']);
+    parsedParam['frame_width'] = parseInt(parsedParam['frame_width']);
+    parsedParam['frame_count'] = parseInt(parsedParam['frame_count']);
 
     var game = new Phaser.Game(720, 1230, Phaser.CANVAS, 'phaser-example', { preload: preload, create: create, update: update });
     function preload() {
       if(parsedParam['ani']) {
-        game.load.spritesheet('test', './upload/files/' + parsedParam.storeName, parsedParam.frameWidth, parsedParam.height, parsedParam.frameCount);
+        game.load.spritesheet('test', './upload/files/' + parsedParam.store_name, parsedParam.frame_width, parsedParam.height, parsedParam.frame_count);
       } else {
-        game.load.image('test', './upload/files/' + parsedParam.storeName, parsedParam.width, parsedParam.height);
+        game.load.image('test', './upload/files/' + parsedParam.store_name, parsedParam.width, parsedParam.height);
       }
     }
+
     function create() {
       game.stage.disableVisibilityChange = true;
-      if(!parsedParam.storeName) {
+      if(!parsedParam.store_name) {
         return;
       }
       if(parsedParam.ani) {

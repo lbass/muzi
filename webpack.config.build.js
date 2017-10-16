@@ -4,13 +4,14 @@ const webpack = require('webpack')
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const dir_js = path.resolve(__dirname, 'src');
 const dir_build = path.resolve(__dirname, 'build');
+const dir_public = path.resolve(__dirname, 'public');
 
 module.exports = {
-  entry: {
-    main: dir_js + '/index.js'
-  },
+  entry: [
+    dir_js + '/app.js'
+  ],
   output: {
-    path: dir_build,
+    path: dir_public,
     filename: 'app.js'
   },
   module: {
@@ -19,6 +20,14 @@ module.exports = {
       test: /\.js$/,
       loader: 'eslint-loader',
       exclude: /node_modules/
+    },{
+      test: /\.js$/,
+      use: {
+        loader: 'babel-loader',
+        options: {
+          "presets": ["env","es2015"]
+        }
+      }
     }],
     loaders: [
       {
@@ -29,7 +38,7 @@ module.exports = {
     ],
   },
   plugins: [
-    new webpack.optimize.UglifyJsPlugin({ compress: { warnings: false } }),
+    // new webpack.optimize.UglifyJsPlugin({ compress: { warnings: false } }),
     new webpack.BannerPlugin('http://www.futurestream.co.kr/ (c) FuturestreamNetworks Corp')
   ],
   resolve: {

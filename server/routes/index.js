@@ -5,5 +5,4 @@ import imagelist from './imagelist';
 const router = express.Router();
 router.use('/preview', imageupload);
 router.use('/preview', imagelist);
-
 export default router;

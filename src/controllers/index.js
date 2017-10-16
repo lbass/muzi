@@ -1,4 +1,4 @@
-import ImagePreviewController from './imagePreviewController';
-import UserController from './user';
+import ImageUploadController from './ImageUploadController';
+import ImageListController from './ImageListController';
 
-export { ImagePreviewController, UserController };
+export { ImageUploadController, ImageListController };
