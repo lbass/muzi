@@ -1,4 +1,5 @@
 'use strict';
+import angular from 'angular';
 
 class ImageListService {
   constructor($http) {
@@ -21,4 +22,5 @@ class ImageListService {
   }
 }
 
+ImageListService.$inject = ['$http'];
 export default ImageListService;

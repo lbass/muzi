@@ -1664,6 +1664,16 @@ exports.TargetState = TargetState;
 "use strict";
 
 
+__webpack_require__(60);
+module.exports = angular;
+
+/***/ }),
+/* 9 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
 Object.defineProperty(exports, "__esModule", { value: true });
 var TransitionHookPhase;
 (function (TransitionHookPhase) {
@@ -1681,7 +1691,7 @@ var TransitionHookScope;
 //# sourceMappingURL=interface.js.map
 
 /***/ }),
-/* 9 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1888,27 +1898,17 @@ exports.Param = Param;
 //# sourceMappingURL=param.js.map
 
 /***/ }),
-/* 10 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", { value: true });
-var ng_from_import = __webpack_require__(11);
-var ng_from_global = angular;
-exports.ng = ng_from_import && ng_from_import.module ? ng_from_import : ng_from_global;
-//# sourceMappingURL=angular.js.map
-
-/***/ }),
 /* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-__webpack_require__(60);
-module.exports = angular;
+Object.defineProperty(exports, "__esModule", { value: true });
+var ng_from_import = __webpack_require__(8);
+var ng_from_global = angular;
+exports.ng = ng_from_import && ng_from_import.module ? ng_from_import : ng_from_global;
+//# sourceMappingURL=angular.js.map
 
 /***/ }),
 /* 12 */
@@ -2022,7 +2022,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
  * @module transition
  */
 /** for typedoc */
-var interface_1 = __webpack_require__(8);
+var interface_1 = __webpack_require__(9);
 var common_1 = __webpack_require__(0);
 var strings_1 = __webpack_require__(5);
 var predicates_1 = __webpack_require__(1);
@@ -2598,13 +2598,13 @@ var coreservices_1 = __webpack_require__(3);
 var common_1 = __webpack_require__(0);
 var predicates_1 = __webpack_require__(1);
 var hof_1 = __webpack_require__(2);
-var interface_1 = __webpack_require__(8); // has or is using
+var interface_1 = __webpack_require__(9); // has or is using
 var transitionHook_1 = __webpack_require__(13);
 var hookRegistry_1 = __webpack_require__(25);
 var hookBuilder_1 = __webpack_require__(31);
 var pathFactory_1 = __webpack_require__(19);
 var targetState_1 = __webpack_require__(7);
-var param_1 = __webpack_require__(9);
+var param_1 = __webpack_require__(10);
 var resolvable_1 = __webpack_require__(14);
 var resolveContext_1 = __webpack_require__(20);
 /** @hidden */
@@ -3701,7 +3701,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var common_1 = __webpack_require__(0);
 var hof_1 = __webpack_require__(2);
 var predicates_1 = __webpack_require__(1);
-var param_1 = __webpack_require__(9);
+var param_1 = __webpack_require__(10);
 var strings_1 = __webpack_require__(5);
 /** @hidden */
 function quoteRegExp(string, param) {
@@ -4472,7 +4472,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
  */ /** for typedoc */
 var common_1 = __webpack_require__(0);
 var predicates_1 = __webpack_require__(1);
-var interface_1 = __webpack_require__(8); // has or is using
+var interface_1 = __webpack_require__(9); // has or is using
 var glob_1 = __webpack_require__(17);
 /**
  * Determines if the given state matches the matchCriteria
@@ -4639,7 +4639,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 /** @module path */ /** for typedoc */
 var common_1 = __webpack_require__(0);
 var hof_1 = __webpack_require__(2);
-var param_1 = __webpack_require__(9);
+var param_1 = __webpack_require__(10);
 /**
  * @internalapi
  *
@@ -4887,7 +4887,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
  * @module transition
  */
 /** for typedoc */
-var interface_1 = __webpack_require__(8);
+var interface_1 = __webpack_require__(9);
 var transition_1 = __webpack_require__(18);
 var hookRegistry_1 = __webpack_require__(25);
 var coreResolvables_1 = __webpack_require__(66);
@@ -5167,7 +5167,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
  * @preferred
  */
 /** for typedoc */
-var angular_1 = __webpack_require__(10);
+var angular_1 = __webpack_require__(11);
 var core_1 = __webpack_require__(4);
 var views_1 = __webpack_require__(30);
 var templateFactory_1 = __webpack_require__(82);
@@ -5425,7 +5425,7 @@ exports.Ng1ViewConfig = Ng1ViewConfig;
 Object.defineProperty(exports, "__esModule", { value: true });
 var common_1 = __webpack_require__(0);
 var predicates_1 = __webpack_require__(1);
-var interface_1 = __webpack_require__(8);
+var interface_1 = __webpack_require__(9);
 var transitionHook_1 = __webpack_require__(13);
 /**
  * This class returns applicable TransitionHooks for a specific Transition instance.
@@ -6459,7 +6459,7 @@ var pathNode_1 = __webpack_require__(26);
 var transitionService_1 = __webpack_require__(28);
 var rejectFactory_1 = __webpack_require__(12);
 var targetState_1 = __webpack_require__(7);
-var param_1 = __webpack_require__(9);
+var param_1 = __webpack_require__(10);
 var glob_1 = __webpack_require__(17);
 var resolveContext_1 = __webpack_require__(20);
 var lazyLoad_1 = __webpack_require__(47);
@@ -7231,7 +7231,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var common_1 = __webpack_require__(0);
 var predicates_1 = __webpack_require__(1);
 var urlMatcher_1 = __webpack_require__(21);
-var param_1 = __webpack_require__(9);
+var param_1 = __webpack_require__(10);
 var paramTypes_1 = __webpack_require__(33);
 /**
  * Factory for [[UrlMatcher]] instances.
@@ -9296,7 +9296,7 @@ module.exports = __webpack_require__(59);
 "use strict";
 
 
-var _angular = __webpack_require__(11);
+var _angular = __webpack_require__(8);
 
 var _angular2 = _interopRequireDefault(_angular);
 
@@ -9315,11 +9315,11 @@ var _services = __webpack_require__(95);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 _angular2.default.module('app', [_angularUiRouter2.default, _ngFileUpload2.default]).config(function ($stateProvider, $urlRouterProvider) {
-    $stateProvider.state('imageupload', {
-        url: '/imageupload',
+    $stateProvider.state('previewUpload', {
+        url: '/preview/upload',
         template: __webpack_require__(97),
-        controller: 'ImageUploadCtrl' }).state('imagelist', {
-        url: '/imagelist',
+        controller: 'ImageUploadCtrl' }).state('previewList', {
+        url: '/preview/list',
         template: __webpack_require__(98),
         controller: 'ImageListCtrl' });
 }).controller('ImageUploadCtrl', ['$scope', 'Upload', '$timeout', _controllers.ImageUploadCtrl]).controller('ImageListCtrl', ['$scope', 'ImageListService', _controllers.ImageListCtrl]).service('ImageListService', _services.ImageListService);
@@ -27333,7 +27333,7 @@ function __export(m) {
     }
 }
 Object.defineProperty(exports, "__esModule", { value: true });
-__export(__webpack_require__(9));
+__export(__webpack_require__(10));
 __export(__webpack_require__(33));
 __export(__webpack_require__(34));
 __export(__webpack_require__(27));
@@ -27810,7 +27810,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
  * @preferred
  * @module transition
  */ /** for typedoc */
-__export(__webpack_require__(8));
+__export(__webpack_require__(9));
 __export(__webpack_require__(31));
 __export(__webpack_require__(25));
 __export(__webpack_require__(12));
@@ -27977,7 +27977,7 @@ exports.UIRouterPluginBase = UIRouterPluginBase;
 Object.defineProperty(exports, "__esModule", { value: true });
 /** @module view */
 /** for typedoc */
-var angular_1 = __webpack_require__(10);
+var angular_1 = __webpack_require__(11);
 var core_1 = __webpack_require__(4);
 /**
  * Service which manages loading of templates from a ViewConfig.
@@ -28687,7 +28687,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
  * @preferred
  * @module directives
  */ /** for typedoc */
-var angular_1 = __webpack_require__(10);
+var angular_1 = __webpack_require__(11);
 var core_1 = __webpack_require__(4);
 /** @hidden */
 function parseStateRef(ref) {
@@ -29258,7 +29258,7 @@ angular_1.ng.module('ui.router.state').directive('uiSref', uiSref).directive('ui
 /** @module ng1 */ /** for typedoc */
 
 Object.defineProperty(exports, "__esModule", { value: true });
-var angular_1 = __webpack_require__(10);
+var angular_1 = __webpack_require__(11);
 /**
  * `isState` Filter: truthy if the current state is the parameter
  *
@@ -29312,8 +29312,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
  * @ng1api
  * @module directives
  */ /** for typedoc */
-var angular_1 = __webpack_require__(10);
-var angular_2 = __webpack_require__(11);
+var angular_1 = __webpack_require__(11);
+var angular_2 = __webpack_require__(8);
 var core_1 = __webpack_require__(4);
 var views_1 = __webpack_require__(30);
 var services_1 = __webpack_require__(29);
@@ -29620,7 +29620,7 @@ angular_1.ng.module('ui.router.state').directive('uiView', $ViewDirectiveFill);
 
 Object.defineProperty(exports, "__esModule", { value: true });
 /** @module ng1 */ /** */
-var angular_1 = __webpack_require__(10);
+var angular_1 = __webpack_require__(11);
 /** @hidden */
 function $ViewScrollProvider() {
     var useAnchorScroll = false;
@@ -32542,7 +32542,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _angular = __webpack_require__(11);
+var _angular = __webpack_require__(8);
 
 var _angular2 = _interopRequireDefault(_angular);
 
@@ -32584,6 +32584,7 @@ var ImageUploadCtrl = function ImageUploadCtrl($scope, Upload, $timeout) {
   };
 };
 
+ImageUploadCtrl.$inject = ['$scope', 'Upload', '$timeout'];
 exports.default = ImageUploadCtrl;
 
 /***/ }),
@@ -32597,7 +32598,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _angular = __webpack_require__(11);
+var _angular = __webpack_require__(8);
 
 var _angular2 = _interopRequireDefault(_angular);
 
@@ -32665,6 +32666,7 @@ var ImageListCtrl = function ImageListCtrl($scope, ImageListService) {
   };
 };
 
+ImageListCtrl.$inject = ['$scope', 'ImageListService'];
 exports.default = ImageListCtrl;
 
 /***/ }),
@@ -32700,6 +32702,12 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+var _angular = __webpack_require__(8);
+
+var _angular2 = _interopRequireDefault(_angular);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var ImageListService = function () {
@@ -32731,6 +32739,7 @@ var ImageListService = function () {
   return ImageListService;
 }();
 
+ImageListService.$inject = ['$http'];
 exports.default = ImageListService;
 
 /***/ }),
@@ -32747,3 +32756,4 @@ module.exports = "<h4>Upload file list</h4>\r\n<table ng-app=\"app\" ng-controll
 
 /***/ })
 /******/ ]);
+//# sourceMappingURL=app.js.map

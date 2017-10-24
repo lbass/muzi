@@ -71,7 +71,6 @@ router.post('/update', function (req, res) {
   var param = req.body;
   var dataFileName = param.storeName.split(".")[0] + '.data';
   var imageData = getImageData(dataFileName);
-  console.info(imageData);
   imageData['frameCount'] = param.frameCount;
   imageData['frameWidth'] = param.frameWidth;
 

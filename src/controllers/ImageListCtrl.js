@@ -74,5 +74,5 @@ class ImageListCtrl {
 
   }
 }
-
+ImageListCtrl.$inject = ['$scope', 'ImageListService'];
 export default ImageListCtrl;

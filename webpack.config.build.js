@@ -46,8 +46,8 @@ module.exports = {
       }
     ],
   },
+  devtool: 'source-map',
   plugins: [
-    // new webpack.optimize.UglifyJsPlugin({ compress: { warnings: false } }),
     new webpack.BannerPlugin('http://www.futurestream.co.kr/ (c) FuturestreamNetworks Corp')
   ],
   resolve: {

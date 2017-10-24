@@ -43,11 +43,11 @@ module.exports = {
       }
     ]
   },
+  devtool: 'source-map',
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin()
   ],
-  devtool: 'inline-source-map',
   resolve: {
     modules: [path.resolve(__dirname, "./src"), "node_modules"]
   }

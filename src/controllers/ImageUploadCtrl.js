@@ -36,5 +36,5 @@ class ImageUploadCtrl {
     };
   }
 }
-
+ImageUploadCtrl.$inject = ['$scope', 'Upload', '$timeout'];
 export default ImageUploadCtrl;
